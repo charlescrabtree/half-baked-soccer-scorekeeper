@@ -3,7 +3,6 @@ import { renderGame } from './render-utils.js';
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
 
-const nameFormButton = document.getElementById('name-form-button');
 const nameForm = document.getElementById('name-form');
 const teamOneAddButton = document.getElementById('team-one-add-button');
 const teamTwoAddButton = document.getElementById('team-two-add-button');
@@ -23,18 +22,18 @@ let currentGame = {
     score2: 0,
 };
 
-nameFormButton.addEventListener('click', (e) => {
+nameForm.addEventListener('submit', (e) => {
     e.preventDefault();
     // get the name data from the form
-    const formData = new FormData(nameForm);
+    const data = new FormData(nameForm);
     // set the state to this data from the form
-    const name1 = formData.get('team-one');
-    const name2 = formData.get('team-two');
+    const name1 = data.get('team-one');
+    const name2 = data.get('team-two');
 
     currentGame.name1 = name1;
     currentGame.name2 = name2;
     // reset the form values
-    nameFormButton.reset();
+    nameForm.reset();
     // refresh the current game element with new data by calling the appropriate function
     refreshCurrentGameEl();
 });
