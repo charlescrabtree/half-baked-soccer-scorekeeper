@@ -29,7 +29,7 @@ nameFormButton.addEventListener('click', () => {
     // reset the form values
     nameFormButton.reset();
     // refresh the current game element with new data by calling the appropriate function
-    displayCurrentGameEl();
+    refreshCurrentGameEl();
 });
 
 
@@ -37,33 +37,30 @@ teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
     score1++;
     // refresh the current game element with new data by calling the appropriate function
-    displayCurrentGameEl();
+    refreshCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
     score2++;
     // refresh the current game element with new data by calling the appropriate function
-    displayCurrentGameEl();
+    refreshCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
     score1--;
     // refresh the current game element with new data by calling the appropriate function
-    displayCurrentGameEl();
+    refreshCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
     score2--;
     // refresh the current game element with new data by calling the appropriate function
-    displayCurrentGameEl();
+    refreshCurrentGameEl();
 });
 
-function displayCurrentGameEl() {
-
-}
 
 finishGameButton.addEventListener('click', () => {
     
@@ -87,6 +84,7 @@ function refreshCurrentGameEl() {
     teamTwoLabel.textContent = name2;
 
     // const gameEl = . . . 
+    const gameEl = renderGame();
     // make a new gameEl here by calling renderGame with the approriate arguments. 
     // Check the renderGame function declaration in render-utils.js to figure out the correct arguments to pass to this function 
     // In render-utils.js as yourself: How many arguments does the function take? What order does it take them in?
@@ -99,7 +97,7 @@ function refreshCurrentGameEl() {
 
 function displayAllGames() {
     // clear out the past games list in the DOM
-
+    pastGames.push(currentGame);
     // loop through the past games in state
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
