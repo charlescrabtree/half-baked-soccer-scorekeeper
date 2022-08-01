@@ -105,3 +105,4 @@ function displayAllGames() {
 
         pastGamesEl.append(gameEl);
     }
+}
