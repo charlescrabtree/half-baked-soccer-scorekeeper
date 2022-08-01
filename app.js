@@ -13,46 +13,57 @@ const teamOneLabel = document.getElementById('team-one-name');
 const teamTwoLabel = document.getElementById('team-two-name');
 
 // create an array to hold on to the state of past games
+const pastGames = [];
 
 let name1 = '';
-let name2 =  '';
+let name2 = '';
 let score1 = 0;
 let score2 = 0;
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the form
-
+    const formData = new FormData(nameForm);
     // set the state to this data from the form
-
+    const name1 = formData.get('team-one');
+    const name2 = formData.get('team-two');
     // reset the form values
-
+    nameFormButton.reset();
     // refresh the current game element with new data by calling the appropriate function
+    displayCurrentGameEl();
 });
 
 
 teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
-    
+    score1++;
     // refresh the current game element with new data by calling the appropriate function
+    displayCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
+    score2++;
     // refresh the current game element with new data by calling the appropriate function
+    displayCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
-
+    score1--;
     // refresh the current game element with new data by calling the appropriate function
+    displayCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
-
+    score2--;
     // refresh the current game element with new data by calling the appropriate function
+    displayCurrentGameEl();
 });
+
+function displayCurrentGameEl() {
+
+}
 
 finishGameButton.addEventListener('click', () => {
     
