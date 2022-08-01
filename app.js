@@ -24,7 +24,7 @@ let currentGame = {
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the form
-    const formData = new FormData(nameForm);
+    const formData = new FormData(nameFormButton);
     // set the state to this data from the form
     const name1 = formData.get('team-one');
     const name2 = formData.get('team-two');
@@ -102,8 +102,13 @@ function refreshCurrentGameEl() {
 
 function displayAllGames() {
     // clear out the past games list in the DOM
-    pastGames.push(currentGame);
+    pastGamesEl.textContent = '';
     // loop through the past games in state
+    for (let game of pastGames) {
+        const gameEl = renderGame(game);
+
+        pastGamesEl.append(gameEl);
+    }
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
 }
