@@ -4,6 +4,7 @@ const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
 
 const nameFormButton = document.getElementById('name-form-button');
+const nameForm = document.getElementById('name-form');
 const teamOneAddButton = document.getElementById('team-one-add-button');
 const teamTwoAddButton = document.getElementById('team-two-add-button');
 const teamOneSubtractButton = document.getElementById('team-one-subtract-button');
@@ -22,9 +23,10 @@ let currentGame = {
     score2: 0,
 };
 
-nameFormButton.addEventListener('click', () => {
+nameFormButton.addEventListener('click', (e) => {
+    e.preventDefault();
     // get the name data from the form
-    const formData = new FormData(nameFormButton);
+    const formData = new FormData(nameForm);
     // set the state to this data from the form
     const name1 = formData.get('team-one');
     const name2 = formData.get('team-two');
@@ -70,6 +72,14 @@ teamTwoSubtractButton.addEventListener('click', () => {
 finishGameButton.addEventListener('click', () => {
     
     // add the current game to an array of games in state
+    pastGames.push(currentGame);
+
+    currentGame = {
+        name1: '',
+        name2: '',
+        score1: 0,
+        score2: 0
+    };
     // it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
     // for example, make an object like this: { name1: 'ducks', name2: 'bears' ,score1: 1, score2: 2 } 
     // then push it to your array in state
@@ -78,7 +88,7 @@ finishGameButton.addEventListener('click', () => {
     displayAllGames();
 
     // reset the state to zero and empty strings
-    
+    refreshCurrentGameEl();
     // refresh the current game element with new data by calling the appropriate function
 });
 
@@ -112,3 +122,4 @@ function displayAllGames() {
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
 }
+
